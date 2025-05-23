@@ -46,9 +46,10 @@ try{
                                 '".$inputCEP."',
                                 '".$inputPR."',
                                 '".$selectTipoDenuncia."',
-                                '".$textareaDescricao."');";
+                                '".$textareaDescricao."'); 
+                                INSERT INTO `DENUNCIA_STATUS` (`PROTOCOLO`, `STATUS`, `DATA`) VALUES ('".$Protocolo."', '1', '".date("Y-m-d H:i:s")."');";
 
-    $data['message']    =   $qInsert;
+    $data['message']    = $qInsert;
     $data['success']    = false;
     
     $pdo->query($qInsert);
@@ -59,7 +60,7 @@ try{
 
  } catch (\PDOException $e) {
         $data['success']    = false;
-        $data['message']    = "Insert failed: " . $e->getMessage();
+        $data['message']    = "Falha ao inserir denúncia: ".$e->getMessage();
  }
 
 

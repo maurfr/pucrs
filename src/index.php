@@ -18,171 +18,154 @@
     </head>
 
     <body>
+
+        <img src="./logo.svg" class="mx-auto d-block pt-5">
         <div class="container mt-5 mb-5 d-flex justify-content-center">
-        <div class="card px-1 py-4">
+            <div class="card-group">
+                <div class="card mx-1 my-4" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Denuncie</h5>
+                        <p class="card-text">Registre aqui sua denúncia sobre eventos que estejam comprometendo a mobilidade urbana.</p>
+                        <a href="./cadastro.php" class="btn btn-primary">Denunciar agora!</a>
+                    </div>
+                </div>
+                <div class="card mx-1 my-4" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Consulte</h5>
+                        <p class="card-text">Informe o protocolo e verique aqui o status atual da sua denúncia.</p>
+                        <form id="formDenuncia" method='post'>
+                            <p><input type="text" class="form-control" id="inputProtocolo" name="inputProtocolo"></p>
+                            <p><button class="btn btn-primary confirm-button">Consultar</button></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--
+<div class="row w-100">
+  <div class="col-2">
+    <div class="card">
         <div class="card-body">
-
-            <form id="formDenuncia" method='post'>
-                <h6 class="card-title mb-3">DENÚNCIA DE FATOS QUE IMPACTEM NA MOBILIDADE URBANA</h6>
-                <div class="d-flex flex-row">
-                    <label class="radio mr-1"> 
-                        <input type="radio" name="inputTipoContato" value="A" checked><span>Anônimo</span>
-                    </label> 
-                    <label class="radio"> 
-                        <input type="radio" name="inputTipoContato" value="I"> 
-                        <span>Identificado</span> 
-                    </label> 
-                </div>
-                            
-                <div class="form-row d-none">
-                    <div class="form-group col-md-12">
-                        <label for="inputNome" class="col-form-label-sm p-0 m-0">Nome</label>
-                        <input type="text" class="form-control" name="inputNome" id="inputNome">
-                    </div>
-                </div>
-                
-                <div class='form-row d-none'>
-                    <div class="form-group col-md-6">
-                        <label for="inputTelefone" class="col-form-label-sm p-0 m-0">Telefone</label>
-                        <input type="text" class="form-control" name="inputTelefone" id="inputTelefone" placeholder="(99) 99999-9999">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputEmail" class="col-form-label-sm p-0 m-0">E-mail</label>
-                        <input type="text" class="form-control" name="inputEmail" id="inputEmail">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputUF" class="col-form-label-sm p-0 m-0">Estado</label>
-                        <select id="inputUF" name="inputUF" class="form-control" required>
-                            <option selected>Selecione...</option>
-                            <?php
-                            $rsUF = $pdo->query("SELECT ID, NOME, UF FROM ESTADO ORDER BY NOME ASC");
-                            foreach ($rsUF as $row) {
-                                echo "<option value='".$row['ID']."'>".$row['NOME']." (".$row['UF'].")</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>    
-                    <div class="form-group col-md-6">
-                        <label for="inputCidade" class="col-form-label-sm p-0 m-0">Cidade</label>
-                        <select id="inputCidade" name="inputCidade" class="form-control" required>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="inputEndereco" class="col-form-label-sm p-0 m-0">Endereço</label>
-                        <input type="text" class="form-control" id="inputEndereco" name="inputEndereco" required>
-                    </div>
-                </div>        
-                
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputCEP" class="col-form-label-sm p-0 m-0">CEP</label>
-                        <input type="text" class="form-control" id="inputCEP" name="inputCEP">
-                    </div>
-                    <div class="form-group col-md-8">
-                        <label for="inputPR" class="col-form-label-sm p-0 m-0">Ponto de referência</label>
-                        <input type="text" class="form-control" id="inputPR" name="inputPR" required>
-                    </div>
-                </div> 
-                
-                <div class="form-group">
-                    <label for="selectTipoDenuncia" class="col-form-label-sm p-0 m-0">Tipo de denúncia</label>
-                    <select id="selectTipoDenuncia" name="selectTipoDenuncia" class="form-control" required>
-                        <option selected>Selecione...</option>
-                        <?php
-                        $unbufferedResult = $pdo->query("SELECT ID, DESCRICAO FROM TIPO");
-                        foreach ($unbufferedResult as $row) {
-                            echo "<option value='".$row['ID']."'>".$row['DESCRICAO']."</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                        <label for="textareaDescricao" class="col-form-label-sm p-0 m-0">Descrição da denúncia</label>
-                        <textarea class="form-control" id="textareaDescricao" name="textareaDescricao" rows="3" required></textarea>
-                </div>
-                
-                <button class="btn btn-primary btn-block confirm-button">Enviar</button>
-
-            </form>
+            <h5 class="card-title">Denuncie</h5>
+            <p class="card-text">Registre aqui sua denúncia sobre eventos que estejam comprometendo a mobilidade urbana.</p>
+            <a href="#" class="btn btn-primary">Denunciar agora!</a>
         </div>
+    </div>
+  </div>
+  <div class="col-1">
+    <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Consulte</h5>
+            <p class="card-text">Verique aqui o status atual da sua denúncia.</p>
+            <a href="#" class="btn btn-primary">Verificar status</a>
+          </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid col-sm-12 col-md-8 col-lg-8 col-xl-8 px-4 py-4 mt-4 mb-5" style="background-color: red;">
+    <div class="card-group">
+        <div class="card mx-1 my-4" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Denuncie</h5>
+                <p class="card-text">egistre aqui sua denúncia sobre eventos que estejam comprometendo a mobilidade urbana.</p>
+                <a href="#" class="btn btn-primary">Denunciar agora!</a>
+            </div>
+        </div>
+        
+        <div class="card mx-1 my-4" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Consulte</h5>
+                <p class="card-text">Verique aqui o status atual da sua denúncia.</p>
+                <a href="#" class="btn btn-primary">Consultar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <div class="row w-100 align-items-center" style="height: calc(100dvh - 6vw);">
+                <div class="col text-center">
+                    <button type="button" style='font-size: calc(1em + 2vw); margin: 1vw;' class="w-50 btn btn-primary btn-lg"  id="buttonExpedicao">Expedição</button>
+                    <button type="button" style='font-size: calc(1em + 2vw); margin: 1vw;' class="w-50 btn btn-primary btn-lg"  id="buttonBalanco">Balanço</button>
+                    <button type="button" style='font-size: calc(1em + 2vw); margin: 1vw;' class="w-50 btn btn-primary btn-lg"  id="buttonArmazenagem">Armazenagem</button>
+                    <button type="button" style='font-size: calc(1em + 2vw); margin: 1vw;' class="w-50 btn btn-primary btn-lg"  id="buttonResina" disabled>Resina</button>
+                    <button type="button" style='font-size: calc(1em + 2vw); margin: 1vw;' class="w-50 btn btn-dark btn-lg" id="buttonSair">Sair</button>
+                </div>
+            </div>
+-->
+
+        <!--
+        <div class="card px-5 py-4">
+        <img src="./logo.svg" class='card-img-top'>
+
+          
+            
+
+    
+    
         </div>
         </div>
 
+
+<div class="container mt-5 mb-5 d-flex justify-content-center">
+<div class="card-group">
+<div class="card">
+<div class="card-body">
+            <h5 class="card-title">Denuncie</h5>
+            <p class="card-text">Registre aqui sua denúncia sobre eventos que estejam comprometendo a mobilidade urbana.</p>
+            <a href="#" class="btn btn-primary">Denunciar agora!</a>
+          </div>
+</div>
+<div class="card mx-3 my-4">
+          <div class="card-body">
+            <h5 class="card-title">Consulte</h5>
+            <p class="card-text">Verique aqui o status atual da sua denúncia.</p>
+            <a href="#" class="btn btn-primary">Verificar status</a>
+          </div>
+</div>
+</div>
+</div>
+
+-->
         
     <script type="text/javascript">
 
 		$( document ).ready(function() {
         
-            $(':radio[name="inputTipoContato"]').change(function() {
-                if($(this).filter(':checked').val() == 'I') {
-                    $("#inputNome").parent().parent().removeClass("d-none");
-                    $("#inputTelefone").parent().parent().removeClass("d-none");
-                } else {
-                    $("#inputNome").parent().parent().addClass("d-none");
-                    $("#inputTelefone").parent().parent().addClass("d-none");
-                }
-            });
-
-            $('#inputUF').change(function(){
-
-                var uf = $('#inputUF').val();
-                
-                $("#inputCidade").children().remove();
-                $.ajax({
-                    method: "POST",
-                    url: "ajax.cidade.php",
-                    data: { uf: $('#inputUF').val() },
-                    dataType: "html"
-                    }).done(function( result ) {
-                            // alert(result);
-                            $("#inputCidade").append(result);
-                    });
-
-            });
-
             $("form").submit(function (event) {
 
                 var formDados = {
-                    inputTipoContato: $('input[name=inputTipoContato]:checked').val(),
-                    inputNome: $("#inputNome").val(),
-                    inputTelefone: $("#inputTelefone").val(),
-                    inputEmail: $("#inputEmail").val(),
-                    inputUF: $("#inputUF").val(),
-                    inputCidade: $("#inputCidade").val(),
-                    inputEndereco: $("#inputEndereco").val(),
-                    inputCEP: $("#inputCEP").val(),
-                    inputPR: $("#inputPR").val(),
-                    selectTipoDenuncia: $("#selectTipoDenuncia").val(),
-                    textareaDescricao: $("#textareaDescricao").val()
+                    inputProtocolo: $("#inputProtocolo").val()
                 };
 
                 $.ajax({
                     method: "POST",
-                    url: "ajax.add.php",
+                    url: "./ajax.get.php",
                     data: formDados,
                     dataType: "json",
                     encode: true,
-                }).done(function (data) {
+                    beforeSend: function(data) {
+                        console.log('Consultando protocolo '+this.data);
+                    },
+                    success: function (data) {
+
+                            console.log('Consulta finalizada.');
                     
-                    console.log(data);
-
-                    if (!data.success) {
+                            if (!data.success) {
                         
-                        alert("Erro. Tente novamente mais tarde.\n\n"+ data.message);
+                                alert("Erro. Tente novamente mais tarde.\n\n"+ data.message);
 
-                    } else {
-                        $("form").html(
-                        '<div class="alert alert-success">' + data.message + "</div>"
-                        );
+                            } else {
+                                alert(data.message);
+                            }
+
+                    },
+                    error: function(err){
+                        console.log("Error!" + err); //just use the err here
+                        console.log(err);
                     }
-
                 });
 
                 event.preventDefault();
